@@ -10,3 +10,5 @@ The message struct will comprise of two data structures; Receivers and Data
 The receivers struct will have two members; number of receivers and a vector with their socket_ids
 
 The data struct will have have two members; length of string and a string with the actual message
+
+Server done as of now
