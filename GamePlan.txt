@@ -1,0 +1,12 @@
+This project is built on a server-client model
+
+
+The server receives messages from client
+
+The client uses a structure called message
+
+The message struct will comprise of two data structures; Receivers and Data
+
+The receivers struct will have two members; number of receivers and a vector with their socket_ids
+
+The data struct will have have two members; length of string and a string with the actual message
