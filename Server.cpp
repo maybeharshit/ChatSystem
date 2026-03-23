@@ -27,8 +27,8 @@ void Server::HandleConnection()
 
 	while(true)
 	{
-		std::cout<<"Type Shi\n";
 		int clientID {accept(serverSocket, nullptr, nullptr)};
+		clientIDs.insert(clientID);
 		std::thread(&Server::ConnectClient, this, clientID).detach();
 	}
 }
@@ -36,10 +36,10 @@ void Server::HandleConnection()
 
 void Server::ConnectClient(int clientID)
 {
-	
+
+/*	
 	char buffer[1024];
 	
-	std::cout<<"Working till here for clientID: "<<clientID<<std::endl;
 
 	int bytes = read(clientID, buffer, 1023 * sizeof(char));
 
@@ -53,7 +53,7 @@ void Server::ConnectClient(int clientID)
 		std::lock_guard<std::mutex> lock(insertingMap);
 		idMap.insert({clientID, name});
 	}
-
+*/
 	HandleCommunication(clientID);
 
 }
@@ -61,6 +61,12 @@ void Server::ConnectClient(int clientID)
 void Server::HandleCommunication(int clientID)
 {
 	std::cout<<"Working till here for clientID: "<<clientID<<std::endl;
+
+	char c;
+
+	read(clientID, &c, 1);
+
+	std::cout<<"Received: "<<c<<" from: "<<clientID<<std::endl;
 
 	/*
 
@@ -71,10 +77,11 @@ void Server::HandleCommunication(int clientID)
 
 		msg.clear();
 
-		msg.ReadMsg(clientID);
+		msg.Read(clientID);
 
 		if(msg.End() == true)
 		{
+			clientIds.erase(clientID);
 			close(clientID);
 			break;
 		}

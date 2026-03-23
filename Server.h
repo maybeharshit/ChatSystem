@@ -6,12 +6,13 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <mutex>
-
+#include <set>
 class Server
 {
 
 	int numberofClients = 5;
 	int serverSocket;
+	std::set<int> clientIDs;
 	sockaddr_in serverAddress;
 	std::unordered_map<int, std::string> idMap;
 	std::mutex insertingMap;

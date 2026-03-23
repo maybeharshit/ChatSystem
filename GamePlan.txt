@@ -12,3 +12,11 @@ The receivers struct will have two members; number of receivers and a vector wit
 The data struct will have have two members; length of string and a string with the actual message
 
 Server done as of now
+
+Client to Server implementation done
+
+To Do
+
+	implement Message and Data
+
+	clean up and remove comments
